@@ -5,7 +5,7 @@ import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
 import lejos.robotics.RegulatedMotor;
 
-public class Main {
+public class Hw1BasicGrapper {
 
 	public static void main(String[] args) {
 		// initialize motors
