@@ -35,12 +35,19 @@ public class Application {
 		}
 		
 		// calculate necessary orientations of matchboxes
-		double r13 = 0;
-		double r23 = 1;
+		double r13 = -1 / (double) 2;
+		double r23 = Math.sqrt(3) / 2;
+		field[1][0].setR13(r13);
+		field[1][0].setR23(r23);
+		field[1][1].setR13(r13 * 0.8);
+		field[1][1].setR23(r23 * 0.8);
 		
-		for (int j = 0; j < size; j++) {
-			field[1][j].setR13(r13);
-			field[1][j].setR23(r23);
+		// set theta3
+		for (int j = 0; j < size - 1; j++) {
+			for (int i = 0; i < size; i++) {
+				field[i][j].setR31(-Math.sqrt(3) / 2);
+				field[i][j].setR32(-Math.sqrt(2) / 2);
+			}
 		}
 		
 		//TODO calculate on robot
@@ -74,12 +81,6 @@ public class Application {
 		// IK
 		Robot robot = new Robot();
 		
-		// initial joint angles
-//		double theta1 = 0;
-//		double theta2Init = Math.toDegrees(-Math.PI / 2);
-//		double theta2 = 0;
-		double theta3 = 0;
-		
 		// iterate through matchboxes from one side
 		for (j = 0; j < size - 1; j++) {
 			for (int i = 0; i < size; i++) {
@@ -92,11 +93,10 @@ public class Application {
 				double theta1 = Math.toDegrees(Math.atan2(s1, c1)) * 3.6;
 				double s2 = -m.getZ() / L1;
 				double c2 = (m.getY() - c1 * D1) / (s1 * L1);
-//				double c2 = (-m.getR23() / m.getX() + m.getR13() * m.getY()) / L1;
-				double theta2 = Math.toDegrees(Math.atan2(s2, c2));
-//				double s3 = 0;
-//				double c3 = 0;
-//				theta3 -= Math.toDegrees(Math.atan2(s3, c3)) - theta3;
+				double theta2 = Math.toDegrees(Math.atan2(s2, c2)) * 0.3;
+				double c3 = -((s2 * (m.getR31() + m.getZ() * L2)) / (s2 * s2 + c2 * m.getR32() - c2 * c2));
+				double s3 = (m.getR32() - c2 * c3) / s2;
+				double theta3 = Math.toDegrees(Math.atan2(s3, c3));
 				
 				// move robot
 				robot.move(theta1, theta2, theta3);

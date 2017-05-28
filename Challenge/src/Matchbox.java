@@ -6,6 +6,8 @@ public class Matchbox {
 	// necessary elements from rotation matrix
 	private double r13;
 	private double r23;
+	private double r31;
+	private double r32;
 	
 	public Matchbox(double x, double y, double z) {
 		this.x = x;
@@ -39,6 +41,22 @@ public class Matchbox {
 	
 	public void setR23(double r23) {
 		this.r23 = r23;
+	}
+	
+	public double getR31() {
+		return r31;
+	}
+	
+	public void setR31(double r31) {
+		this.r31 = r31;
+	}
+	
+	public double getR32() {
+		return r32;
+	}
+	
+	public void setR32(double r32) {
+		this.r32 = r32;
 	}
 	
 	public String toString() {

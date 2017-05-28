@@ -14,9 +14,9 @@ public class Robot {
 	private final EV3ColorSensor colorSensor;
 	
 	public Robot() {
-		j1 = getMotor(MotorPort.D, 200);
-		j2 = getMotor(MotorPort.C, 200);
-		j3 = getMotor(MotorPort.B, 200);
+		j1 = getMotor(MotorPort.D, 100);
+		j2 = getMotor(MotorPort.C, 100);
+		j3 = getMotor(MotorPort.B, 100);
 		colorSensor = new EV3ColorSensor(SensorPort.S1);
 	}
 	
@@ -25,17 +25,17 @@ public class Robot {
 		Delay.msDelay(1000);
 		j2.rotate((int) Math.round(theta2));
 		Delay.msDelay(1000);
-//		j3.rotate((int) Math.round(theta3));
-//		Delay.msDelay(1000);
+		j3.rotate((int) Math.round(theta3));
+		Delay.msDelay(1000);
 	}
 	
 	public void moveBack(double theta1, double theta2, double theta3) {
+		j3.rotate((int) Math.round(theta3));
+		Delay.msDelay(1000);
 		j2.rotate((int) Math.round(theta2));
 		Delay.msDelay(1000);
 		j1.rotate((int) Math.round(theta1));
 		Delay.msDelay(1000);
-//		j3.rotate((int) Math.round(theta3));
-//		Delay.msDelay(1000);
 	}
 	
 	public MatchboxColor getColor() {
