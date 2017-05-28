@@ -42,7 +42,7 @@ public class Matchbox {
 	}
 	
 	public String toString() {
-		return "[" + x + " " + y + " " + z + "]";
+		return "[" + x + " " + y + " " + z + " , r13 = " + r13 + " ; r23 = " + r23 + "]";
 	}
 	
 }

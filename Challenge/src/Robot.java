@@ -22,11 +22,20 @@ public class Robot {
 	
 	public void move(double theta1, double theta2, double theta3) {
 		j1.rotate((int) Math.round(theta1));
-		Delay.msDelay(2000);
+		Delay.msDelay(1000);
 		j2.rotate((int) Math.round(theta2));
-		Delay.msDelay(2000);
-		j3.rotate((int) Math.round(theta3));
-		Delay.msDelay(2000);
+		Delay.msDelay(1000);
+//		j3.rotate((int) Math.round(theta3));
+//		Delay.msDelay(1000);
+	}
+	
+	public void moveBack(double theta1, double theta2, double theta3) {
+		j2.rotate((int) Math.round(theta2));
+		Delay.msDelay(1000);
+		j1.rotate((int) Math.round(theta1));
+		Delay.msDelay(1000);
+//		j3.rotate((int) Math.round(theta3));
+//		Delay.msDelay(1000);
 	}
 	
 	public MatchboxColor getColor() {
