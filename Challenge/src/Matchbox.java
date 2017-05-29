@@ -1,8 +1,8 @@
 public class Matchbox {
 	
-	private final double x;
-	private final double y;
-	private final double z;
+	public double x;
+	public double y;
+	public double z;
 	// necessary elements from rotation matrix
 	private double r13;
 	private double r23;

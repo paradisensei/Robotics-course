@@ -10,13 +10,13 @@ public class Application {
 	private static final double FIELD_LENGTH = 29.6;
 	private static final double OFFSET = 0.5;
 	private static final double ROBOT_OFFSET = 4.5;
-	private static final double BOX_WIDTH = 3.5;
-	private static final double BOX_HEIGHT = 1.5;
+	private static final double BOX_WIDTH = 3.7;
+	private static final double BOX_HEIGHT = 1.2;
 	
 	// Manipulator characteristics in cm.
-	private static final double L1 = 9;
-	private static final double L2 = 9.5;
-	private static final double D1 = 5;
+	private static final double L1 = 8;
+	private static final double L2 = 7;
+	private static final double D1 = 3;
 	
 	public static void main(String[] args) {
 		int size = 3;
@@ -33,6 +33,59 @@ public class Application {
 				field[i][j] = new Matchbox(posX, posY, 0);
 			}
 		}
+		
+//		Robot robot = new Robot();
+//		
+//		Matchbox m = field[0][0];
+//		double theta1 = 43;
+//		double theta2 = -60;
+//		double theta3 = 120;
+//		double[][] t = FK.getHomTrans(theta1, theta2, theta3);
+//		m.setR13(t[0][2]);
+//		m.setR23(t[1][2]);
+//		m.setR31(t[2][0]);
+//		m.setR32(t[2][1]);
+////		m.x = t[0][3];
+////		m.y = t[1][3];
+////		m.z = t[2][3];
+//		
+//		double[] theta = IK.solve(m);
+//		
+////		robot.move(theta[0], theta[1], theta[2]);
+////		robot.moveBack(-theta[0], -theta[1], -theta[2]);
+//		
+//		Matchbox m1 = field[0][1];
+//		theta1 = -35;
+//		theta2 = 22;
+//		theta3 = 45;
+//		t = FK.getHomTrans(theta1, theta2, theta3);
+//		m1.setR13(t[0][2]);
+//		m1.setR23(t[1][2]);
+//		m1.setR31(t[2][0]);
+//		m1.setR32(t[2][1]);
+////		m1.x = t[0][3];
+////		m1.y = t[1][3];
+////		m1.z = t[2][3];
+//		
+//		theta = IK.solve(m1);
+//		
+//		robot.move(theta[0], theta[1], theta[2]);
+//		robot.moveBack(-theta[0], -theta[1], -theta[2]);
+//		
+//		Matchbox m2 = field[2][0];
+//		theta1 = 85;
+//		theta2 = -40;
+//		theta3 = 120;
+//		t = FK.getHomTrans(theta1, theta2, theta3);
+//		m.setR13(t[0][2]);
+//		m.setR23(t[1][2]);
+//		m.setR31(t[2][0]);
+//		m.setR32(t[2][1]);
+//		theta = IK.solve(m);
+//		
+////		robot.move(theta[0], theta[1], theta[2]);
+////		robot.moveBack(-theta[0], -theta[1], -theta[2]);
+		
 		
 		// calculate necessary orientations of matchboxes
 		double r13 = -1 / (double) 2;
@@ -79,7 +132,6 @@ public class Application {
 		MatchboxColor[][] ans = new MatchboxColor[size][size];
 		
 		// IK
-		Robot robot = new Robot();
 		
 		// iterate through matchboxes from one side
 		for (j = 0; j < size - 1; j++) {
@@ -87,16 +139,16 @@ public class Application {
 				
 				Matchbox m = field[i][j];
 				
-				// find joint angles
+				 find joint angles
 				double s1 = -m.getR13();
 				double c1 = m.getR23();
-				double theta1 = Math.toDegrees(Math.atan2(s1, c1)) * 3.6;
+				double theta1 = Math.toDegrees(Math.atan2(s1, c1)) * -3.27;
 				double s2 = -m.getZ() / L1;
 				double c2 = (m.getY() - c1 * D1) / (s1 * L1);
-				double theta2 = Math.toDegrees(Math.atan2(s2, c2)) * 0.3;
+				double theta2 = Math.toDegrees(Math.atan2(s2, c2)) * 0.88;
 				double c3 = -((s2 * (m.getR31() + m.getZ() * L2)) / (s2 * s2 + c2 * m.getR32() - c2 * c2));
 				double s3 = (m.getR32() - c2 * c3) / s2;
-				double theta3 = Math.toDegrees(Math.atan2(s3, c3));
+				double theta3 = Math.toDegrees(Math.atan2(s3, c3)) * 0.88;
 				
 				// move robot
 				robot.move(theta1, theta2, theta3);
@@ -140,9 +192,9 @@ public class Application {
 //		}
 		
 		// check color matrix
-		for (int i = 0; i < size; i++) {
-			System.out.println(Arrays.toString(ans[i]));
-		}
+//		for (int i = 0; i < size; i++) {
+//			System.out.println(Arrays.toString(ans[i]));
+//		}
 		
 		robot.stop();
 	}
