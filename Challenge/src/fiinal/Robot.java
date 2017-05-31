@@ -27,13 +27,13 @@ public class Robot {
 	
 	public void move(double theta1, double theta2, double theta3) {
 		rotate(j1, theta1);
-//		rotate(j2, theta2);
-//		rotate(j3, theta3);
+		rotate(j2, theta2);
+		rotate(j3, theta3);
 	}
 	
 	public void moveBack(double theta1, double theta2, double theta3) {
-//		rotate(j3, -theta3);
-//		rotate(j2, -theta2);
+		rotate(j3, -theta3);
+		rotate(j2, -theta2);
 		rotate(j1, -theta1);
 	}
 	

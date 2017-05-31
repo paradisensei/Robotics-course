@@ -1,9 +1,11 @@
 package fiinal;
+
 import java.util.Arrays;
 
 public class Application {
 	public static void main(String[] args) {
-		double[][] leftTr = FK.getTransform(55, -40, 120);
+		double[][] leftTr = FK.getTransform(-25, -40, 120);
+		FK.printMatrix(leftTr);
 		Matchbox leftMatchbox = new Matchbox(leftTr);
 		
 		double[] jointAngles = IK.solve(leftMatchbox);
