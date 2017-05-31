@@ -1,3 +1,4 @@
+package old;
 import java.util.Arrays;
 
 import lejos.hardware.Sound;

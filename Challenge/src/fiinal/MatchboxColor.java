@@ -1,3 +1,5 @@
+package fiinal;
+
 public enum MatchboxColor {
 	
 	NO(0),
@@ -14,4 +16,5 @@ public enum MatchboxColor {
 	private MatchboxColor(int code) {
 		this.code = code;
 	}
+	
 }

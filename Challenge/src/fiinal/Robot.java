@@ -1,3 +1,4 @@
+package fiinal;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
@@ -7,6 +8,10 @@ import lejos.robotics.RegulatedMotor;
 import lejos.utility.Delay;
 
 public class Robot {
+	
+	public static final double L1 = 8;
+	public static final double L2 = 7;
+	public static final double D1 = 3;
 	
 	private final RegulatedMotor j1;
 	private final RegulatedMotor j2;
@@ -21,20 +26,19 @@ public class Robot {
 	}
 	
 	public void move(double theta1, double theta2, double theta3) {
-		j1.rotate((int) Math.round(theta1));
-		Delay.msDelay(1000);
-		j2.rotate((int) Math.round(theta2));
-		Delay.msDelay(1000);
-		j3.rotate((int) Math.round(theta3));
-		Delay.msDelay(1000);
+		rotate(j1, theta1);
+//		rotate(j2, theta2);
+//		rotate(j3, theta3);
 	}
 	
 	public void moveBack(double theta1, double theta2, double theta3) {
-		j3.rotate((int) Math.round(theta3));
-		Delay.msDelay(1000);
-		j2.rotate((int) Math.round(theta2));
-		Delay.msDelay(1000);
-		j1.rotate((int) Math.round(theta1));
+//		rotate(j3, -theta3);
+//		rotate(j2, -theta2);
+		rotate(j1, -theta1);
+	}
+	
+	private void rotate(RegulatedMotor j, double theta) {
+		j.rotate((int) Math.round(theta));
 		Delay.msDelay(1000);
 	}
 	
@@ -77,5 +81,5 @@ public class Robot {
 		m.stop();
 		m.close();
 	}
-	
+
 }
