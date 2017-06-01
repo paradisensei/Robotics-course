@@ -1,4 +1,4 @@
-package fiinal;
+package org.sing;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
@@ -13,6 +13,10 @@ public class Robot {
 	public static final double L2 = 7;
 	public static final double D1 = 3;
 	
+	private static final double J1_ERR_COEF = -3.27;
+	private static final double J2_ERR_COEF = -0.88;
+	private static final double J3_ERR_COEF = 0.88;
+	
 	private final RegulatedMotor j1;
 	private final RegulatedMotor j2;
 	private final RegulatedMotor j3;
@@ -26,15 +30,15 @@ public class Robot {
 	}
 	
 	public void move(double theta1, double theta2, double theta3) {
-		rotate(j1, theta1);
-		rotate(j2, theta2);
-		rotate(j3, theta3);
+		rotate(j1, theta1 * J1_ERR_COEF);
+		rotate(j2, theta2 * J2_ERR_COEF);
+		rotate(j3, theta3 * J3_ERR_COEF);
 	}
 	
 	public void moveBack(double theta1, double theta2, double theta3) {
-		rotate(j3, -theta3);
-		rotate(j2, -theta2);
-		rotate(j1, -theta1);
+		rotate(j3, -theta3 * J3_ERR_COEF);
+		rotate(j2, -theta2 * J2_ERR_COEF);
+		rotate(j1, -theta1 * J1_ERR_COEF);
 	}
 	
 	private void rotate(RegulatedMotor j, double theta) {

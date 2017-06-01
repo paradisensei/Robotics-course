@@ -1,4 +1,4 @@
-package fiinal;
+package org.sing;
 
 public class Matchbox {
 	

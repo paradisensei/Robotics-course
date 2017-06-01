@@ -1,10 +1,10 @@
-package fiinal;
+package org.sing;
 
 import java.util.Arrays;
 
-import static fiinal.Robot.L1;
-import static fiinal.Robot.L2;
-import static fiinal.Robot.D1;
+import static org.sing.Robot.D1;
+import static org.sing.Robot.L1;
+import static org.sing.Robot.L2;
 
 public class FK {
 	
@@ -14,16 +14,16 @@ public class FK {
 		}
 	}
 	 
-	public static double[][] getTransform(double theta1, double theta2, double theta3) {
-		theta1 = Math.toRadians(theta1);
+	public static double[][] getTransform(int[] theta) {
+		final double theta1 = Math.toRadians(theta[0]);
 		final double s1 = Math.sin(theta1);
 		final double c1 = Math.cos(theta1);
 		  
-		theta2 = Math.toRadians(theta2);
+		final double theta2 = Math.toRadians(theta[1]);
 		final double s2 = Math.sin(theta2);
 		final double c2 = Math.cos(theta2);
 		  
-		theta3 = Math.toRadians(theta3);
+		final double theta3 = Math.toRadians(theta[2]);
 		final double s3 = Math.sin(theta3);
 		final double c3 = Math.cos(theta3);
 		
