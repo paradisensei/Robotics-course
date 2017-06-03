@@ -17,4 +17,7 @@ public enum MatchboxColor {
 		this.code = code;
 	}
 	
+	public int getCode() {
+		return this.code;
+	}
 }
