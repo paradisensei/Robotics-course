@@ -62,8 +62,7 @@ public class TaskB {
 				}
 			} else {
 				// traverse all other rows.
-				// 4 % 2 == 0 - out of bounds exception.
-				int dropColorPosition = previousColorCode > size ? previousColorCode % (i + 1) : previousColorCode;
+				int dropColorPosition = previousColorCode % size == 0 ? size : previousColorCode % size;
 				
 				double[][] t = FK.getTransform(field[i][dropColorPosition - 1]);
 				double[] jointAngles = IK.solve(new Matchbox(t));
