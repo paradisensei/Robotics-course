@@ -1,6 +1,7 @@
 package org.sing;
 
 public class Field {
+	
 	public static int[][][] getBySize(int size) {
 		switch(size) {
 			case 3: return get3x3();
@@ -14,12 +15,12 @@ public class Field {
 		int[][][] field = new int[3][3][3];
 		
 		// values are approximate. Hardware testing required.
-		field[0][0] = new int[] {25, -35, 93};
-		field[0][1] = new int[] {0, -60, 172};
-		field[0][2] = new int[] {-45, -35, 93};
-		field[1][0] = new int[] {15, -35, 105};
-		field[1][1] = new int[] {0, -40, 100};
-		field[1][2] = new int[] {-35, -30, 80};
+		field[0][0] = new int[] {22, -74, 153};
+		field[0][1] = new int[] {-75, -70, 180};
+		field[0][2] = new int[] {-90, -70, 160};
+		field[1][0] = new int[] {10, -25, 55};
+		field[1][1] = new int[] {-21, -25, 65};
+		field[1][2] = new int[] {-50, -25, 55};
 				
 		// after relocation. joint values are mirrored.
 		field[2][0] = field[0][2];
@@ -38,4 +39,5 @@ public class Field {
 		// hardware testing required.
 		return null;
 	}
+	
 }

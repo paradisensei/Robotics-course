@@ -10,7 +10,7 @@ import lejos.utility.Delay;
 public class Robot {
 	
 	public static final double L1 = 8;
-	public static final double L2 = 7;
+	public static final double L2 = 11;
 	public static final double D1 = 3;
 	
 	private static final double J1_ERR_COEF = -3.27;
@@ -23,9 +23,9 @@ public class Robot {
 	private final EV3ColorSensor colorSensor;
 	
 	public Robot() {
-		j1 = getMotor(MotorPort.D, 100);
-		j2 = getMotor(MotorPort.C, 100);
-		j3 = getMotor(MotorPort.B, 100);
+		j1 = getMotor(MotorPort.D, 50);
+		j2 = getMotor(MotorPort.C, 50);
+		j3 = getMotor(MotorPort.B, 50);
 		colorSensor = new EV3ColorSensor(SensorPort.S1);
 	}
 	
@@ -43,7 +43,7 @@ public class Robot {
 	
 	private void rotate(RegulatedMotor j, double theta) {
 		j.rotate((int) Math.round(theta));
-		Delay.msDelay(1000);
+		Delay.msDelay(500);
 	}
 	
 	public MatchboxColor getColor() {

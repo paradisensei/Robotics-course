@@ -31,7 +31,7 @@ public class IK {
 		
 		// solve for theta 2
 		double phi = Math.toDegrees(Math.acos(t[2][0]));
-		double theta2 = -(90 - phi + theta3);
+		double theta2 = Math.abs(phi - theta3);
 		
 		return new double[] {theta1, theta2, theta3};
 	}
