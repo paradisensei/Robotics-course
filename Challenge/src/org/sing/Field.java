@@ -15,9 +15,9 @@ public class Field {
 		int[][][] field = new int[3][3][3];
 		
 		// values are approximate. Hardware testing required.
-		field[0][0] = new int[] {22, -74, 153};
-		field[0][1] = new int[] {-75, -70, 180};
-		field[0][2] = new int[] {-90, -70, 160};
+		field[0][0] = new int[] {22, -78, 153};
+		field[0][1] = new int[] {-65, -65, 180};
+		field[0][2] = new int[] {-87, -67, 160};
 		field[1][0] = new int[] {10, -25, 55};
 		field[1][1] = new int[] {-21, -25, 65};
 		field[1][2] = new int[] {-50, -25, 55};

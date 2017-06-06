@@ -13,9 +13,9 @@ public class Robot {
 	public static final double L2 = 11;
 	public static final double D1 = 3;
 	
-	private static final double J1_ERR_COEF = -3.27;
+	private static final double J1_ERR_COEF = -3.33;
 	private static final double J2_ERR_COEF = -0.88;
-	private static final double J3_ERR_COEF = 0.88;
+	private static final double J3_ERR_COEF = 0.92;
 	
 	private final RegulatedMotor j1;
 	private final RegulatedMotor j2;
@@ -26,13 +26,14 @@ public class Robot {
 		j1 = getMotor(MotorPort.D, 50);
 		j2 = getMotor(MotorPort.C, 50);
 		j3 = getMotor(MotorPort.B, 50);
-		colorSensor = new EV3ColorSensor(SensorPort.S1);
+		colorSensor = new EV3ColorSensor(SensorPort.S4);
 	}
 	
 	public void move(double theta1, double theta2, double theta3) {
 		rotate(j1, theta1 * J1_ERR_COEF);
 		rotate(j2, theta2 * J2_ERR_COEF);
 		rotate(j3, theta3 * J3_ERR_COEF);
+		Delay.msDelay(1000);
 	}
 	
 	public void moveBack(double theta1, double theta2, double theta3) {
