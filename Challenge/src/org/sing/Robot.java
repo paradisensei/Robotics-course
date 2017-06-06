@@ -1,4 +1,5 @@
 package org.sing;
+
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
@@ -44,7 +45,6 @@ public class Robot {
 	
 	private void rotate(RegulatedMotor j, double theta) {
 		j.rotate((int) Math.round(theta));
-		Delay.msDelay(500);
 	}
 	
 	public MatchboxColor getColor() {

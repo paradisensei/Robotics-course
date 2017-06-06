@@ -31,10 +31,11 @@ public class TaskA {
 				double[] jointAngles = IK.solve(new Matchbox(t));
 				
 				robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
+				
 				MatchboxColor c = robot.getColor();
 				System.out.println(c);
-				Delay.msDelay(1000);
 				ans[size - 1 - i][j] = c;
+				
 				robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 			}
 		}
