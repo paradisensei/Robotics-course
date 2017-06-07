@@ -28,6 +28,7 @@ public class Robot {
 		j2 = getMotor(MotorPort.C, 50);
 		j3 = getMotor(MotorPort.B, 50);
 		colorSensor = new EV3ColorSensor(SensorPort.S4);
+		colorSensor.setFloodlight(6);
 	}
 	
 	public void move(double theta1, double theta2, double theta3) {

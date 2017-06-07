@@ -15,12 +15,12 @@ public class Field {
 		int[][][] field = new int[3][3][3];
 		
 		// values are approximate. Hardware testing required.
-		field[0][0] = new int[] {22, -78, 142};
+		field[0][0] = new int[] {20, -66, 142};
 		field[0][1] = new int[] {-60, -73, 180};
-		field[0][2] = new int[] {-87, -50, 160};
-		field[1][0] = new int[] {3, -27, 49};
-		field[1][1] = new int[] {-24, -32, 65};
-		field[1][2] = new int[] {-49, -25, 58};
+		field[0][2] = new int[] {-90, -60, 160};
+		field[1][0] = new int[] {3, -11, 54};
+		field[1][1] = new int[] {-26, -15, 66};
+		field[1][2] = new int[] {-46, -8, 57};
 				
 		// after relocation. joint values are mirrored.
 		field[2][0] = field[0][2];
