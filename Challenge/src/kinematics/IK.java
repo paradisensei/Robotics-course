@@ -1,12 +1,13 @@
-package org.sing;
+package kinematics;
 
-import static org.sing.Robot.D1;
-import static org.sing.Robot.L1;
-import static org.sing.Robot.L2;
+import field.Matchbox;
+
+import static robot.Robot.D1;
+import static robot.Robot.L1;
+import static robot.Robot.L2;
 
 public class IK {
 		
-	// TODO: add base offset along X.
 	public static double[] solve(Matchbox m) {
 		double[][] t = m.getTransform();
 		

@@ -1,18 +1,10 @@
-package org.sing;
+package kinematics;
 
-import java.util.Arrays;
-
-import static org.sing.Robot.D1;
-import static org.sing.Robot.L1;
-import static org.sing.Robot.L2;
+import static robot.Robot.L1;
+import static robot.Robot.L2;
+import static robot.Robot.D1;
 
 public class FK {
-	
-	public static void printMatrix(double[][] matrix) {
-		for (double[] r : matrix) {
-			System.out.println(Arrays.toString(r));
-		}
-	}
 	 
 	public static double[][] getTransform(int[] theta) {
 		final double theta1 = Math.toRadians(theta[0]);

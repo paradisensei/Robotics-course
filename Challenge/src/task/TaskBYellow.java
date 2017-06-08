@@ -1,42 +1,48 @@
-package org.sing;
+package task;
 
+import kinematics.FK;
+import kinematics.IK;
 import lejos.hardware.Sound;
 import lejos.utility.Delay;
+import robot.Robot;
+import field.Field;
+import field.Matchbox;
+import field.MatchboxColor;
 
-/**
- * Assuming robot stands on the narrow side of the field.
- */
-
-public class TaskB {
+public class TaskBYellow {
+	
+	private static final int SIZE = 4;
+	
 	public static void main(String[] args) {
-		int size = 3;
+		// choose C color
+		MatchboxColor inputColor = MatchboxColor.YELLOW;
+		int previousColorCode = inputColor.ordinal();
 		
-		MatchboxColor inputColor = MatchboxColor.BLACK; // C - black
-		int[][][] field = Field.getBySize(size);
+		int[][][] field = Field.getBySize(SIZE);
+		
 		Robot robot = new Robot();
 		
-		// for all rows except the first one
-		int previousColorCode = inputColor.getCode();
-		
 		// traverse rows
-		for(int i = 0; i < size; i++) {
+		for(int i = 0; i < SIZE; i++) {
+			
 			// relocation condition
-			if ((size == 3 && i == 2) || (size == 4 && i == 2) || (size == 5 && i == 3)) {
-				Delay.msDelay(15000);
+			if (i == 2) {
+				Delay.msDelay(30000);
 			}
 			
-			if(i == 0) {
+			if (i == 0) {
 				// traverse first row
-				for(int j = 0; j < size; j++) {
+				for (int j = 0; j < SIZE; j++) {
 					double[][] t = FK.getTransform(field[i][j]);
 					double[] jointAngles = IK.solve(new Matchbox(t));
 					
 					robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
 					
 					MatchboxColor color = robot.getColor();
+					System.out.println(color);
 
-					if(color == inputColor) {
-						//drop();
+					if (color == inputColor) {
+						robot.dropBox(i, j, SIZE);
 						robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 						break;
 					}
@@ -44,31 +50,36 @@ public class TaskB {
 					robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 				}
 			} else {
-				// traverse all other rows.
-				int dropColorPosition = previousColorCode % size == 0 ? size : previousColorCode % size;
+				// traverse all other rows
+				int j = previousColorCode % SIZE - 1;
+				if (j < 0) {
+					j = 0;
+				}
 				
-				double[][] t = FK.getTransform(field[i][dropColorPosition - 1]);
+				double[][] t = FK.getTransform(field[i][j]);
 				double[] jointAngles = IK.solve(new Matchbox(t));
 				
 				robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
 				
 				MatchboxColor color = robot.getColor();
+				System.out.println(color);
 				
-				if(color == inputColor)
-					//drop();
+				if (color == inputColor) {
+					robot.dropBox(i, j, SIZE);
+				}
 
-				previousColorCode = color.getCode();
+				previousColorCode = color.ordinal();
 				
 				robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 			}
 		}
 	
 		// finish execution
-		double[][] t = FK.getTransform(field[size - 1][size - 1]);
+		double[][] t = FK.getTransform(field[SIZE - 1][SIZE - 1]);
 		double[] jointAngles = IK.solve(new Matchbox(t));
 		robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
 		Sound.beep();
-		Delay.msDelay(10000);
 		robot.stop();
 	}
+	
 }
