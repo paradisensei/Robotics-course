@@ -1,7 +1,5 @@
 package org.sing;
 
-import java.util.Arrays;
-
 import lejos.hardware.Sound;
 import lejos.utility.Delay;
 

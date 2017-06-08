@@ -12,7 +12,7 @@ import lejos.utility.Delay;
  */
 public class TaskA {
 	public static void main(String[] args) {
-		int size = 3;
+		int size = 4;
 		
 		int[][][] field = Field.getBySize(size);
 		
@@ -20,7 +20,7 @@ public class TaskA {
 		
 		Robot robot = new Robot();
 		
-		for (int i = 0; i < size - 1; i++) {
+		for (int i = 0; i < size - 2; i++) {
 			// relocation condition
 			if ((size <= 4 && i == 2) || (size == 5 && i == 3)) {
 				Delay.msDelay(25000);
