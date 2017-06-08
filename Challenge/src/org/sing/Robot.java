@@ -44,6 +44,18 @@ public class Robot {
 		rotate(j1, -theta1 * J1_ERR_COEF);
 	}
 	
+	public void dropBox() {
+		// get ready
+		rotate(j3, -30 * J3_ERR_COEF);
+		rotate(j2, -20);
+		
+		// drop
+		rotate(j3, 30 * J3_ERR_COEF);
+		
+		// move back
+		rotate(j2, 20);
+	}
+	
 	private void rotate(RegulatedMotor j, double theta) {
 		j.rotate((int) Math.round(theta));
 	}

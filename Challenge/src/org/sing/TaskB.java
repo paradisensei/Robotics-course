@@ -36,7 +36,7 @@ public class TaskB {
 					MatchboxColor color = robot.getColor();
 
 					if(color == inputColor) {
-						drop();
+						//drop();
 						robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 						break;
 					}
@@ -55,7 +55,7 @@ public class TaskB {
 				MatchboxColor color = robot.getColor();
 				
 				if(color == inputColor)
-					drop();
+					//drop();
 
 				previousColorCode = color.getCode();
 				
@@ -70,9 +70,5 @@ public class TaskB {
 		Sound.beep();
 		Delay.msDelay(10000);
 		robot.stop();
-	}
-	
-	private static void drop() {
-		// dropping procedure here...
 	}
 }

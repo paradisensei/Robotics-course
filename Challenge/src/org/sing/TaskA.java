@@ -36,6 +36,8 @@ public class TaskA {
 				System.out.println(c);
 				ans[size - 1 - i][j] = c;
 				
+				robot.dropBox();
+				
 				robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 			}
 		}
