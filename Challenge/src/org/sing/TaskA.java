@@ -20,7 +20,7 @@ public class TaskA {
 		
 		Robot robot = new Robot();
 		
-		for (int i = 0; i < size - 2; i++) {
+		for (int i = 0; i < size - 1; i++) {
 			// relocation condition
 			if ((size <= 4 && i == 2) || (size == 5 && i == 3)) {
 				Delay.msDelay(25000);
