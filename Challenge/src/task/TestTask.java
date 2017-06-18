@@ -17,11 +17,11 @@ public class TestTask {
 		
 		Robot robot = new Robot();
 		
-		for (int i = 0; i < SIZE - 2; i++) {
+		for (int i = 0; i < SIZE; i++) {
 			// relocation condition
-//			if (i == 2) {
-//				Delay.msDelay(30000);
-//			}
+			if (i == 2) {
+				Delay.msDelay(30000);
+			}
 			
 			for (int j = 0; j < SIZE; j++) {
 				double[][] t = FK.getTransform(field[i][j]);

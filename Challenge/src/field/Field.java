@@ -32,16 +32,15 @@ public class Field {
 	private static int[][][] get4x4() {
 		int[][][] field = new int[4][4][3];
 		
-		field[0][0] = new int[] {20, -72, 149};
-		//TODO bad precision
-		field[0][1] = new int[] {-26, -83, 173};
+		field[0][0] = new int[] {21, -72, 149};
+		field[0][1] = new int[] {-26, -76, 177};
 		field[0][2] = new int[] {-65, -76, 177};
-		field[0][3] = new int[] {-80, -60, 160};
+		field[0][3] = new int[] {-75, -71, 158};
 		
-		field[1][0] = new int[] {11, -40, 90};
-		field[1][1] = new int[] {-17, -47, 113};
-		field[1][2] = new int[] {-34, -44, 113};
-		field[1][3] = new int[] {-50, -40, 100};
+		field[1][0] = new int[] {12, -41, 90};
+		field[1][1] = new int[] {-13, -45, 110};
+		field[1][2] = new int[] {-32, -43, 109};
+		field[1][3] = new int[] {-46, -40, 98};
 		
 		//after relocation, joint values are mirrored
 		field[2][0] = field[1][3];
@@ -64,14 +63,14 @@ public class Field {
 		field[0] = field4x4[0];
 		field[4] = field4x4[3];
 		
-		field[1][0] = new int[] {13, -56, 117};
-		field[1][1] = new int[] {-20, -57, 117};
-		field[1][2] = new int[] {-44, -51, 113};
-		field[1][3] = new int[] {-54, -130, 103};
+		field[1][0] = new int[] {11, -53, 117};
+		field[1][1] = new int[] {-17, -53, 120};
+		field[1][2] = new int[] {-40, -47, 113};
+		field[1][3] = new int[] {-51, -127, 106};
 		
-		field[2][0] = new int[] {5, -25, 55};
-		field[2][1] = new int[] {-18, -45, 117};
-		field[2][2] = new int[] {-38, -53, 111};
+		field[2][0] = new int[] {8, -25, 55};
+		field[2][1] = new int[] {-16, -45, 117};
+		field[2][2] = new int[] {-36, -53, 111};
 		field[2][3] = new int[] {-42, -20, 58};
 		
 		//after relocation, joint values are mirrored

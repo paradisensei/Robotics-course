@@ -135,12 +135,59 @@ public class Robot {
 	}
 	
 	public MatchboxColor getColor() {
-		int colorID = colorSensor.getColorID();
+		// get rgb
+		float[] rgb = new float[3];
+		colorSensor.getRGBMode().fetchSample(rgb, 0);
+		System.out.print("[");
+		for (float c : rgb) {
+			System.out.printf("%.3f", c);
+			System.out.printf(" ");
+		}
+		System.out.println("]");
 		
-		if (colorID == 6) {
+		if (rgb[0] < 0.014 && rgb[1] < 0.014 && rgb[2] < 0.014) {
+			return MatchboxColor.BLACK;
+		}
+		
+		if (rgb[0] > 0.045 && rgb[1] > 0.045 && rgb[2] > 0.045) {
 			return MatchboxColor.WHITE;
 		}
 		
+		if (rgb[0] > rgb[2] && rgb[1] > rgb[2]) {
+			float max = Math.max(rgb[0], rgb[1]);
+			float min = Math.min(rgb[0], rgb[1]);
+			float div1 = rgb[0] / rgb[1];
+			float div2 = max / min;
+			if (div1 >= 1.75 && div1 <= 3) {
+				return MatchboxColor.BROWN;
+			} else if (div2 >= 1 && div2 <= 1.75) {
+				return MatchboxColor.YELLOW;
+			}
+		}
+		
+		MatchboxColor c = getRGBColor();
+		if (c == MatchboxColor.RED) {
+			return c;
+		} else {
+			int greenCount = c == MatchboxColor.GREEN ? 1 : 0;
+			int blueCount = c == MatchboxColor.BLUE ? 1 : 0;
+			for (int i = 0; i < 5; i++) {
+				c = getRGBColor();
+				if (c == MatchboxColor.GREEN) {
+					greenCount++;
+				} else if (c == MatchboxColor.BLUE) {
+					blueCount++;
+				}
+			}
+			if (greenCount > blueCount) {
+				return MatchboxColor.GREEN;
+			} else {
+				return MatchboxColor.BLUE;
+			}
+		}
+	}
+	
+	private MatchboxColor getRGBColor() {
 		float[] rgb = new float[3];
 		colorSensor.getRGBMode().fetchSample(rgb, 0);
 		
@@ -151,31 +198,14 @@ public class Robot {
 			}
 		}
 		
-		if (rgb[0] < 0.01 && rgb[1] < 0.01 && rgb[2] < 0.01) {
-			return MatchboxColor.BLACK;
-		}
-		
-		if (rgb[0] > rgb[2] && rgb[1] > rgb[2]) {
-			float max = Math.max(rgb[0], rgb[1]);
-			float min = Math.min(rgb[0], rgb[1]);
-			if (rgb[0] / rgb[1] >= 1.75) {
-				return MatchboxColor.BROWN;
-			} else if (max / min <= 1.6) {
-				return MatchboxColor.YELLOW;
-			}
-		}
-		
 		switch (maxColorIndex) {
 			case 0:
 				return MatchboxColor.RED;
 			case 1:
 				return MatchboxColor.GREEN;
-			case 2:
+			default:
 				return MatchboxColor.BLUE;
 		}
-		
-		// default color
-		return MatchboxColor.BLACK;
 	}
 	
 	public void stop() {

@@ -8,14 +8,11 @@ import lejos.utility.Delay;
 
 public class Test {
 	public static void main(String[] args) {
-		double[][] t = FK.getTransform(new int[]{22, -72, 149});
+		double[][] t = FK.getTransform(new int[]{-75, -71, 158});
 		double[] jointAngles = IK.solve(new Matchbox(t));
+		System.out.println(Arrays.toString(jointAngles));
 		
 		Robot r = new Robot();
-		System.out.println(r.getColor());
-		System.out.println(r.getColor());
-		System.out.println(r.getColor());
-		System.out.println(r.getColor());
 		System.out.println(r.getColor());
 		
 		r.move(jointAngles[0], jointAngles[1], jointAngles[2]);
