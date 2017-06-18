@@ -59,18 +59,19 @@ public class Field {
 	private static int[][][] get5x5() {
 		int[][][] field = new int[5][4][3];
 		
-		int[][][] field4x4 = get4x4();
-		field[0] = field4x4[0];
-		field[4] = field4x4[3];
+		field[0][0] = new int[] {21, -71, 149};
+		field[0][1] = new int[] {-26, -76, 177};
+		field[0][2] = new int[] {-65, -76, 177};
+		field[0][3] = new int[] {-78, -68, 157};
 		
-		field[1][0] = new int[] {11, -53, 117};
-		field[1][1] = new int[] {-17, -53, 120};
-		field[1][2] = new int[] {-40, -47, 113};
-		field[1][3] = new int[] {-51, -127, 106};
+		field[1][0] = new int[] {13, -50, 114};
+		field[1][1] = new int[] {-16, -52, 122};
+		field[1][2] = new int[] {-38, -50, 120};
+		field[1][3] = new int[] {-54, -50, 111};
 		
-		field[2][0] = new int[] {8, -25, 55};
-		field[2][1] = new int[] {-16, -45, 117};
-		field[2][2] = new int[] {-36, -53, 111};
+		field[2][0] = new int[] {9, -25, 53};
+		field[2][1] = new int[] {-14, -30, 65};
+		field[2][2] = new int[] {-34, -30, 65};
 		field[2][3] = new int[] {-42, -20, 58};
 		
 		//after relocation, joint values are mirrored
@@ -78,6 +79,11 @@ public class Field {
 		field[3][1] = field[1][2];
 		field[3][2] = field[1][1];
 		field[3][3] = field[1][0];
+		
+		field[4][0] = field[0][3];
+		field[4][1] = field[0][2];
+		field[4][2] = field[0][1];
+		field[4][3] = field[0][0];
 		
 		return field;
 	}
