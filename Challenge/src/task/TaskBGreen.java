@@ -15,7 +15,7 @@ public class TaskBGreen {
 	
 	public static void main(String[] args) {
 		// choose C color
-		MatchboxColor inputColor = MatchboxColor.GREEN;
+		MatchboxColor inputColor = MatchboxColor.YELLOW;
 		int previousColorCode = inputColor.ordinal();
 		
 		int[][][] field = Field.getBySize(SIZE);

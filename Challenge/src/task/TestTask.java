@@ -17,7 +17,7 @@ public class TestTask {
 		
 		Robot robot = new Robot();
 		
-		for (int i = 0; i < SIZE - 2; i++) {
+		for (int i = 2; i < SIZE - 2; i++) {
 			// relocation condition
 			if (i == 3) {
 				Delay.msDelay(30000);

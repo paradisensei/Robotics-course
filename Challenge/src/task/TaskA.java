@@ -26,7 +26,7 @@ public class TaskA {
 		
 		Robot robot = new Robot();
 		
-		for (int i = 0; i < SIZE; i++) {
+		for (int i = 0; i < SIZE - 1; i++) {
 			// relocation condition
 			if (i == 2) {
 				Delay.msDelay(30000);
@@ -51,12 +51,12 @@ public class TaskA {
 		}
 		
 		// finish execution
-		double[][] t = FK.getTransform(field[SIZE - 1][SIZE - 1]);
-		double[] jointAngles = IK.solve(new Matchbox(t));
-		robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
-		Sound.beep();
-		Delay.msDelay(20000);
-		robot.stop();
+//		double[][] t = FK.getTransform(field[SIZE - 1][SIZE - 1]);
+//		double[] jointAngles = IK.solve(new Matchbox(t));
+//		robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
+//		Sound.beep();
+//		Delay.msDelay(20000);
+//		robot.stop();
 	}
 	
 }

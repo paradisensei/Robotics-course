@@ -94,28 +94,28 @@ public class Robot {
 				// get ready
 				rotate(j1, 40 * J1_ERR_COEF);
 				rotate(j3, -30 * J3_ERR_COEF);
-				rotate(j2, 35 * J2_ERR_COEF);
+				rotate(j2, 27 * J2_ERR_COEF);
 				
 				// drop
 				rotate(j1, -45 * J1_ERR_COEF);
 				
 				// move back
-				rotate(j2, -35 * J2_ERR_COEF);
+				rotate(j2, -27 * J2_ERR_COEF);
 				rotate(j1, 5 * J1_ERR_COEF);
 				rotate(j3, 30 * J3_ERR_COEF);
 			} else if(i == 0 && j == 3 || i == 3 && j == 0) {
 				// get ready
 				rotate(j1, 30 * J1_ERR_COEF);
-				rotate(j3, -30 * J3_ERR_COEF);
-				rotate(j2, 45 * J2_ERR_COEF);
+				rotate(j3, -35 * J3_ERR_COEF);
+				rotate(j2, 50 * J2_ERR_COEF);
 				
 				// drop
 				rotate(j1, -40 * J1_ERR_COEF);
 				
 				// move back
-				rotate(j2, -45 * J2_ERR_COEF);
+				rotate(j2, -50 * J2_ERR_COEF);
 				rotate(j1, 10 * J1_ERR_COEF);
-				rotate(j3, 30 * J3_ERR_COEF);
+				rotate(j3, 35 * J3_ERR_COEF);
 			} else {
 				// get ready
 				rotate(j2, 20 * J2_ERR_COEF);
@@ -146,7 +146,7 @@ public class Robot {
 		System.out.println("]");
 		
 		// adjust to the light
-		if (rgb[0] < 0.014 && rgb[1] < 0.014 && rgb[2] < 0.014) {
+		if (rgb[0] < 0.017 && rgb[1] < 0.017 && rgb[2] < 0.017) {
 			return MatchboxColor.BLACK;
 		}
 		
@@ -156,15 +156,19 @@ public class Robot {
 		}
 		
 		if (rgb[0] > rgb[2] && rgb[1] > rgb[2]) {
+			float div1 = rgb[0] / rgb[1];
+			if (div1 >= 1.65 && div1 <= 2.5) {
+				return MatchboxColor.BROWN;
+			}
 			float max = Math.max(rgb[0], rgb[1]);
 			float min = Math.min(rgb[0], rgb[1]);
-			float div1 = rgb[0] / rgb[1];
 			float div2 = max / min;
-			if (div1 >= 1.65 && div1 <= 2.9) {
-				return MatchboxColor.BROWN;
-			} else if (div2 >= 1 && div2 <= 1.65) {
+			if (div2 >= 1 && div2 <= 1.65) {
 				return MatchboxColor.YELLOW;
 			}
+//			if (div2 >= 1 && div2 <= 2) {
+//				return MatchboxColor.YELLOW;
+//			}
 		}
 		
 		return getRGBColor();
