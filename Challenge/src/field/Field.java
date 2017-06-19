@@ -33,11 +33,11 @@ public class Field {
 		int[][][] field = new int[4][4][3];
 		
 		field[0][0] = new int[] {21, -72, 149};
-		field[0][1] = new int[] {-26, -76, 177};
+		field[0][1] = new int[] {-26, -76, 175};
 		field[0][2] = new int[] {-65, -76, 177};
-		field[0][3] = new int[] {-75, -71, 158};
+		field[0][3] = new int[] {-82, -55, 147};
 		
-		field[1][0] = new int[] {12, -41, 90};
+		field[1][0] = new int[] {12, -47, 95};
 		field[1][1] = new int[] {-13, -45, 110};
 		field[1][2] = new int[] {-32, -43, 109};
 		field[1][3] = new int[] {-46, -40, 98};
@@ -63,10 +63,10 @@ public class Field {
 		field[0][1] = new int[] {-26, -76, 177};
 		field[0][2] = new int[] {-65, -76, 177};
 		field[0][3] = new int[] {-78, -68, 157};
-		
-		field[1][0] = new int[] {13, -50, 114};
-		field[1][1] = new int[] {-16, -52, 122};
-		field[1][2] = new int[] {-38, -50, 120};
+
+		field[1][0] = new int[] {11, -55, 116};
+		field[1][1] = new int[] {-17, -53, 126};
+		field[1][2] = new int[] {-40, -52, 128};
 		field[1][3] = new int[] {-54, -50, 111};
 		
 		field[2][0] = new int[] {9, -25, 53};

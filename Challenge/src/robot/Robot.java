@@ -145,10 +145,12 @@ public class Robot {
 		}
 		System.out.println("]");
 		
+		// adjust to the light
 		if (rgb[0] < 0.014 && rgb[1] < 0.014 && rgb[2] < 0.014) {
 			return MatchboxColor.BLACK;
 		}
 		
+		// adjust to the light
 		if (rgb[0] > 0.045 && rgb[1] > 0.045 && rgb[2] > 0.045) {
 			return MatchboxColor.WHITE;
 		}
@@ -158,33 +160,14 @@ public class Robot {
 			float min = Math.min(rgb[0], rgb[1]);
 			float div1 = rgb[0] / rgb[1];
 			float div2 = max / min;
-			if (div1 >= 1.75 && div1 <= 3) {
+			if (div1 >= 1.65 && div1 <= 2.9) {
 				return MatchboxColor.BROWN;
-			} else if (div2 >= 1 && div2 <= 1.75) {
+			} else if (div2 >= 1 && div2 <= 1.65) {
 				return MatchboxColor.YELLOW;
 			}
 		}
 		
-		MatchboxColor c = getRGBColor();
-		if (c == MatchboxColor.RED) {
-			return c;
-		} else {
-			int greenCount = c == MatchboxColor.GREEN ? 1 : 0;
-			int blueCount = c == MatchboxColor.BLUE ? 1 : 0;
-			for (int i = 0; i < 5; i++) {
-				c = getRGBColor();
-				if (c == MatchboxColor.GREEN) {
-					greenCount++;
-				} else if (c == MatchboxColor.BLUE) {
-					blueCount++;
-				}
-			}
-			if (greenCount > blueCount) {
-				return MatchboxColor.GREEN;
-			} else {
-				return MatchboxColor.BLUE;
-			}
-		}
+		return getRGBColor();
 	}
 	
 	private MatchboxColor getRGBColor() {
