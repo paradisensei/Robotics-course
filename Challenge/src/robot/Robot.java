@@ -136,7 +136,73 @@ public class Robot {
 				rotate(j3, 70 * J3_ERR_COEF);
 			}
 		} else {
-			
+			if(i == 0 && j <= 1 || i == 4 && j >= 2) {
+				int theta2;
+				if(j == 0) {
+					theta2 = 20;
+				} else {
+					theta2 = 30;
+				}
+				
+				// get ready
+				rotate(j3, -35 * J3_ERR_COEF);
+				rotate(j2, -theta2);
+				
+				// drop
+				rotate(j3, 35 * J3_ERR_COEF);
+				
+				// move back
+				rotate(j2, theta2);
+			} else if(i == 0 && j == 2 || i == 4 && j == 1) {
+				// get ready
+				rotate(j1, 40 * J1_ERR_COEF);
+				rotate(j3, -35 * J3_ERR_COEF);
+				rotate(j2, 35 * J2_ERR_COEF);
+				
+				// drop
+				rotate(j1, -30 * J1_ERR_COEF);
+				rotate(j3, 20 * J3_ERR_COEF);
+				
+				// move back
+				rotate(j2, -35 * J2_ERR_COEF);
+				rotate(j1, -10 * J1_ERR_COEF);
+				rotate(j3, 15 * J3_ERR_COEF);
+			} else if(i == 0 && j == 3 || i == 4 && j == 0) {
+				// get ready
+				rotate(j1, 30 * J1_ERR_COEF);
+				rotate(j3, -35 * J3_ERR_COEF);
+				rotate(j2, 30 * J2_ERR_COEF);
+				
+				// drop
+				rotate(j1, -40 * J1_ERR_COEF);
+				
+				// move back
+				rotate(j2, -30 * J2_ERR_COEF);
+				rotate(j1, 10 * J1_ERR_COEF);
+				rotate(j3, 35 * J3_ERR_COEF);
+			} else if(i == 1 || i == 3) {
+				if(i == 1 && j == 3 || i == 3 && j == 0) {
+					rotate(j2, -10 * J2_ERR_COEF);
+					rotate(j3, 20 * J3_ERR_COEF);
+					rotate(j2, 20 * J2_ERR_COEF);
+					rotate(j3, -30 * J3_ERR_COEF);
+					
+					rotate(j2, -10 * J2_ERR_COEF);
+					rotate(j3, 10 * J3_ERR_COEF);
+				} else {
+					// get ready
+					rotate(j2, 10 * J2_ERR_COEF);
+					
+					// drop
+					rotate(j3, -20 * J3_ERR_COEF);
+					rotate(j2, -10 * J2_ERR_COEF);
+					
+					// move back				
+					rotate(j3, 20 * J3_ERR_COEF);
+				}
+			} else {
+				
+			}
 		}
 	}
 	

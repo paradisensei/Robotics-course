@@ -10,7 +10,7 @@ import field.MatchboxColor;
 
 public class TestTask {
 	
-	private static final int SIZE = 4;
+	private static final int SIZE = 5;
 	
 	public static void main(String[] args) {
 		int[][][] field = Field.getBySize(SIZE);
@@ -23,7 +23,7 @@ public class TestTask {
 				Delay.msDelay(30000);
 			}
 			
-			for (int j = 0; j < SIZE; j++) {
+			for (int j = 3; j < SIZE; j++) {
 				double[][] t = FK.getTransform(field[i][j]);
 				double[] jointAngles = IK.solve(new Matchbox(t));
 				
@@ -32,9 +32,12 @@ public class TestTask {
 //				MatchboxColor c = robot.getColor();
 //				System.out.println(c);
 //				System.out.println("------------");
-//				robot.dropBox(i, j, SIZE);
+				robot.dropBox(i, j, SIZE);
 				
 				robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
+				if(j == 3) {
+				return;
+				}
 			}
 		}
 	}
