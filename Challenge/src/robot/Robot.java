@@ -79,41 +79,49 @@ public class Robot {
 				// move back				
 				rotate(j3, 70 * J3_ERR_COEF);
 			}
-		} else if(size == 4 || size == 5) {
+		} else if(size == 4) {
 			if(i == 0 && j <= 1 || i == 3 && j >= 2) {
+				int theta2;
+				if(j == 0) {
+					theta2 = 20;
+				} else {
+					theta2 = 30;
+				}
+				
 				// get ready
 				rotate(j3, -50 * J3_ERR_COEF);
-				rotate(j2, -30);
+				rotate(j2, -theta2);
 				
 				// drop
 				rotate(j3, 50 * J3_ERR_COEF);
 				
 				// move back
-				rotate(j2, 30);
+				rotate(j2, theta2);
 			} else if(i == 0 && j == 2 || i == 3 && j == 1) {
 				// get ready
 				rotate(j1, 40 * J1_ERR_COEF);
-				rotate(j3, -30 * J3_ERR_COEF);
-				rotate(j2, 27 * J2_ERR_COEF);
+				rotate(j3, -55 * J3_ERR_COEF);
+				rotate(j2, 40 * J2_ERR_COEF);
 				
 				// drop
-				rotate(j1, -45 * J1_ERR_COEF);
+				rotate(j1, -30 * J1_ERR_COEF);
+				rotate(j3, 40 * J3_ERR_COEF);
 				
 				// move back
-				rotate(j2, -27 * J2_ERR_COEF);
-				rotate(j1, 5 * J1_ERR_COEF);
-				rotate(j3, 30 * J3_ERR_COEF);
+				rotate(j2, -40 * J2_ERR_COEF);
+				rotate(j1, -10 * J1_ERR_COEF);
+				rotate(j3, 15 * J3_ERR_COEF);
 			} else if(i == 0 && j == 3 || i == 3 && j == 0) {
 				// get ready
 				rotate(j1, 30 * J1_ERR_COEF);
 				rotate(j3, -35 * J3_ERR_COEF);
-				rotate(j2, 50 * J2_ERR_COEF);
+				rotate(j2, 30 * J2_ERR_COEF);
 				
 				// drop
 				rotate(j1, -40 * J1_ERR_COEF);
 				
 				// move back
-				rotate(j2, -50 * J2_ERR_COEF);
+				rotate(j2, -30 * J2_ERR_COEF);
 				rotate(j1, 10 * J1_ERR_COEF);
 				rotate(j3, 35 * J3_ERR_COEF);
 			} else {
@@ -127,6 +135,8 @@ public class Robot {
 				// move back				
 				rotate(j3, 70 * J3_ERR_COEF);
 			}
+		} else {
+			
 		}
 	}
 	
