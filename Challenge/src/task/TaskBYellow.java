@@ -15,7 +15,7 @@ public class TaskBYellow {
 	
 	public static void main(String[] args) {
 		// choose C color
-		MatchboxColor inputColor = MatchboxColor.YELLOW;
+		MatchboxColor inputColor = MatchboxColor.BLUE;
 		int previousColorCode = inputColor.ordinal();
 		
 		int[][][] field = Field.getBySize(SIZE);
@@ -41,7 +41,7 @@ public class TaskBYellow {
 					MatchboxColor color = robot.getColor();
 					System.out.println(color);
 
-					if (color == inputColor) {
+					if (color == inputColor || j == 3) {
 						robot.dropBox(i, j, SIZE);
 						robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 						break;

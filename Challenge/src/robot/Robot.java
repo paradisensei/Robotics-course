@@ -191,17 +191,25 @@ public class Robot {
 					rotate(j3, 10 * J3_ERR_COEF);
 				} else {
 					// get ready
-					rotate(j2, 10 * J2_ERR_COEF);
+					rotate(j2, 14 * J2_ERR_COEF);
 					
 					// drop
 					rotate(j3, -20 * J3_ERR_COEF);
-					rotate(j2, -10 * J2_ERR_COEF);
+					rotate(j2, -14 * J2_ERR_COEF);
 					
 					// move back				
 					rotate(j3, 20 * J3_ERR_COEF);
 				}
 			} else {
+				// get ready
+				rotate(j2, 20 * J2_ERR_COEF);
 				
+				// drop
+				rotate(j3, -30 * J3_ERR_COEF);
+				rotate(j2, -20 * J2_ERR_COEF);
+				
+				// move back				
+				rotate(j3, 30 * J3_ERR_COEF);
 			}
 		}
 	}
@@ -227,7 +235,7 @@ public class Robot {
 		}
 		
 		// adjust to the light
-		if (rgb[0] > 0.045 && rgb[1] > 0.045 && rgb[2] > 0.045) {
+		if (rgb[0] > 0.05 && rgb[1] > 0.05 && rgb[2] > 0.05) {
 			return MatchboxColor.WHITE;
 		}
 		
@@ -242,9 +250,6 @@ public class Robot {
 			if (div2 >= 1 && div2 <= 1.65) {
 				return MatchboxColor.YELLOW;
 			}
-//			if (div2 >= 1 && div2 <= 2) {
-//				return MatchboxColor.YELLOW;
-//			}
 		}
 		
 		return getRGBColor();

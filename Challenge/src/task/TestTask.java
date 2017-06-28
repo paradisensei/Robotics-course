@@ -17,27 +17,23 @@ public class TestTask {
 		
 		Robot robot = new Robot();
 		
-		for (int i = 1; i < SIZE - 2; i++) {
+		for (int i = 0; i < SIZE; i++) {
 			// relocation condition
-			if (i == 2) {
+			if (i == 3) {
 				Delay.msDelay(30000);
 			}
 			
-			for (int j = 3; j < SIZE; j++) {
+			for (int j = 0; j < SIZE - 1; j++) {
 				double[][] t = FK.getTransform(field[i][j]);
 				double[] jointAngles = IK.solve(new Matchbox(t));
 				
 				robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
 				
-//				MatchboxColor c = robot.getColor();
-//				System.out.println(c);
-//				System.out.println("------------");
-				robot.dropBox(i, j, SIZE);
+				MatchboxColor c = robot.getColor();
+				System.out.println(c);
+				System.out.println("------------");
 				
 				robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
-				if(j == 3) {
-				return;
-				}
 			}
 		}
 	}

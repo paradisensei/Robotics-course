@@ -41,7 +41,7 @@ public class TaskBGreen {
 					MatchboxColor color = robot.getColor();
 					System.out.println(color);
 
-					if (color == inputColor) {
+					if (color == inputColor || j == 2) {
 						robot.dropBox(i, j, SIZE);
 						robot.moveBack(jointAngles[0], jointAngles[1], jointAngles[2]);
 						break;
@@ -51,12 +51,9 @@ public class TaskBGreen {
 				}
 			} else {
 				// traverse all other rows
-				int j = previousColorCode % SIZE - 1;
-				if (j < 0) {
-					j = 0;
-				}
+				int j = previousColorCode % SIZE == 0 ? SIZE : previousColorCode % SIZE;
 				
-				double[][] t = FK.getTransform(field[i][j]);
+				double[][] t = FK.getTransform(field[i][j - 1]);
 				double[] jointAngles = IK.solve(new Matchbox(t));
 				
 				robot.move(jointAngles[0], jointAngles[1], jointAngles[2]);
@@ -65,7 +62,7 @@ public class TaskBGreen {
 				System.out.println(color);
 				
 				if (color == inputColor) {
-					robot.dropBox(i, j, SIZE);
+					robot.dropBox(i, j - 1, SIZE);
 				}
 
 				previousColorCode = color.ordinal();
